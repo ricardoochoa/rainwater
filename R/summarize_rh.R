@@ -29,7 +29,9 @@ summarize_rh <- function(x, year = "2020"){
   TEMP <- list() # save the list in the object "TEMP".
 
   # Summarize water use and demand for each month
-  TEMP$summary_monthly <- stats::aggregate(cbind(x$usedrw, x$demand)~x$m, FUN = sum)
+  TEMP$monthly_summary <- stats::aggregate(cbind(x$usedrw, x$demand)~x$m, FUN = sum)
+  names(TEMP$monthly_summary) <- c("month", "supply", "demand")
+  TEMP$monthly_summary$percentage <- 100 * TEMP$monthly_summary$supply / TEMP$monthly_summary$demand
 
   TEMP$rain_percentage <- paste(round(100*sum(x$usedrw)/sum(x$demand), 0), "%")
   # calculate and add the percentage
