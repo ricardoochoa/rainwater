@@ -7,7 +7,7 @@ Maintainer: Ricardo Ochoa <ricardo.ochoaf@capsus.mx>
 Description: This package was developed to assist in the planning and design stages of rain harvesting systems. Its objective is to serve as support in the technical analysis and basic calculations of rain harvesting systems.
 Imports:
     plyr, lubridate, stats
-License: GPL-3
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.1
