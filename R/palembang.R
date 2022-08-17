@@ -4,7 +4,7 @@
 #'
 #' @docType data
 #'
-#' @usage data(palembang_precipitation)
+#' @usage data(palembang)
 #'
 #' @format data.frame with precipitation data in mm.
 #'
@@ -16,6 +16,6 @@
 #' @source \href{https://www.ncdc.noaa.gov/cdo-web/search}{NOAA FTP Archive}
 #'
 #' @examples
-#' data(palembang_precipitation)
-"palembang_precipitation"
+#' data(palembang)
+"palembang"
 
