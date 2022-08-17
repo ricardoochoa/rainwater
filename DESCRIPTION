@@ -1,0 +1,13 @@
+Package: rainwater
+Type: Package
+Title: Rainwater harvesting potential estimation
+Version: 0.1.0
+Author: Ricardo Ochoa, Socorro Roman, Emiliano Sosa
+Maintainer: Ricardo Ochoa <ricardo.ochoaf@capsus.mx>
+Description: This package was developed to assist in the planning and design stages of rain harvesting systems. Its objective is to serve as support in the technical analysis and basic calculations of rain harvesting systems.
+Imports:
+    plyr, lubridate, stats
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
