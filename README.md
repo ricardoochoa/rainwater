@@ -44,10 +44,10 @@ Let’s explore the data:
 
 In this example, we will estimate the rainwater harvesting potential for
 a housing unit in Palembang. We will consider that the catchment area is
-100m.
+100 square meters and that the water storage capacity is 600 liters.
 
 ``` r
-r <- rhp(p = palembang$PRCP_mm, area = 100)
+r <- rhp(p = palembang$PRCP_mm, area = 100, tank.size = 600)
 ```
 
 Summarize the results
@@ -68,7 +68,7 @@ with rain:
 s$rain_percentage
 ```
 
-    ## [1] "70 %"
+    ## [1] "75 %"
 
 Now let’s find the total rainwater usage in liters in the given year:
 
@@ -76,4 +76,31 @@ Now let’s find the total rainwater usage in liters in the given year:
 s$rain_volume
 ```
 
-    ## [1] "50,945  L/year"
+    ## [1] "54,735  L/year"
+
+Now we will repeat all calculations for different tank capacities. We
+will try 600, 1000, 2000, 3000, and 4000 liters. For this calculation we
+will use the *rho* function (rainwater harvesting optimization).
+
+``` r
+R <- rho(p = palembang$PRCP_mm, area = 100, tank.size = c(600, 1000, 2000, 3000, 4000, 5000, 6000))
+S <- summarize_rh(R)
+S
+```
+
+    ##   tank.size   supply demand percentage
+    ## 1       600 54735.06  73200   74.77467
+    ## 2      1000 61467.74  73200   83.97233
+    ## 3      2000 69711.30  73200   95.23401
+    ## 4      3000 71968.50  73200   98.31762
+    ## 5      4000 72968.50  73200   99.68374
+    ## 6      5000 73200.00  73200  100.00000
+    ## 7      6000 73200.00  73200  100.00000
+
+As can be seen from the table, a tank with a capacity higher than 3000
+liters results in nearly full self-sufficiency (\>98%). A tank with 6000
+liters or higher capacity would result in increased costs with no
+additional benefits.
+
+Finally, we can plot the results to explain the optimal tank capacity.
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
