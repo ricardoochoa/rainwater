@@ -38,6 +38,13 @@ head(palembang)
     ## 6     1   6   2.032 2020-01-06
 
 Let’s explore the data:
+
+``` r
+plot(x = palembang$date, y = palembang$PRCP_mm, 
+     type ="l", main = "Precipitation in Palembang (2020)", 
+     xlab = "", ylab = "Precipitation [mm]", col = "darkcyan") 
+```
+
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ## Evaluate the system potential
@@ -58,6 +65,17 @@ s <- summarize_rh(r, "2020")
 
 Next, we will take a look at the graphical summary. As can be seen from
 the plot, most of the water demand can be solved with rainwater.
+
+``` r
+with(s$monthly_summary, { 
+     barplot(names=month, height=demand, col = "white", 
+             xlab = "month", ylab = "liters / household / month")
+     barplot(names=month, height=supply, col = "darkcyan", 
+             add = T)
+     legend("bottomleft", inset=.05, legend=c("deficit", "supply"),
+            fill=c("white", "darkcyan"), cex=0.8)
+  })
+```
 
 ![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
@@ -103,4 +121,12 @@ liters or higher capacity would result in increased costs with no
 additional benefits.
 
 Finally, we can plot the results to explain the optimal tank capacity.
+
+``` r
+plot(x = S$tank.size, y = S$percentage, 
+     type = "b", col = "darkcyan", 
+     xlab = "tank capacity [L]", 
+     ylab = "self-sufficiency [%]")
+```
+
 ![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
